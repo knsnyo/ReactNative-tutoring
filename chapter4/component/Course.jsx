@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
 import Star from "./Star";
 
 const url = "https://oblador.github.io/react-native-vector-icons/";
