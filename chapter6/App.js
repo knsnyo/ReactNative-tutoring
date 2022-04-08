@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import TodoInsert from "./component/TodoInsert";
 import TodoList from "./component/TodoList";
+import uuid from "uuid-random";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -9,12 +10,12 @@ export default function App() {
   const addTodo = (text) => {
     setTodos([
       ...todos,
-      {id: Math.random.toString(), todo: text, done: false}
+      {id: uuid(), todo: text, done: false}
     ])
   };
 
   const deleteTodo = (id) => (e) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id != id));
   }
 
   return (

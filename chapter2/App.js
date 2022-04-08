@@ -1,30 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView } from "react-native";
 
 export default function App() {
-  const myName = "myName";
-  const todos = [
-    "const변수",
-    "JSX 문법",
-  ];
+  const todos = ["김장현", "const변수", "JSX 문법", "array", "function"];
+
   const todoList = todos.map((todo) => {
-    return (<Text>{todo}</Text>);
+    return (<Text style={styles.todo}>{todo}</Text>);
   });
 
-  return (
-    <View style={styles.container}>
-      <Text>{myName}</Text>
-      <StatusBar style="auto" />
-      {todoList}
-    </View>
-  );
+  return <SafeAreaView style={styles.container}>{todoList}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
+  todo: {
+    backgroundColor: "#ddd",
+  }
 });
