@@ -7,7 +7,11 @@ export default function App() {
     return (<Text style={styles.todo}>{todo}</Text>);
   });
 
-  return <SafeAreaView style={styles.container}>{todoList}</SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.container}>
+      {todoList}
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
