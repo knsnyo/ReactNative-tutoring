@@ -5,13 +5,17 @@ const INIT_STATE = {
 	todos: [
 		{
 			id: 1,
-			text: "안녕",
+			text: "인사까진 연습했는데",
 		},
 		{
-			id: 1,
-			text: "안녕",
+			id: 2,
+			text: "거기까진 문제 없었는데",
+		},
+		{
+			id: 3,
+			text: "왜 네 앞에 서면 바보처럼 웃게 돼",
 		}
-	]
+	],
 };
 
 export const Context = createContext(INIT_STATE);

@@ -5,7 +5,7 @@ import { Context } from "../context/Context";
 import uuid from "uuid-random";
 
 export default function TodoInsert() {
-  const {state, dispatch} = useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   const [item, setItem] = useState("");
 
@@ -15,10 +15,10 @@ export default function TodoInsert() {
       payload: {
         id: uuid(),
         text: item,
-      }
+      },
     });
     setItem("");
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -26,6 +26,7 @@ export default function TodoInsert() {
         onChangeText={(e) => setItem(e)}
         placeholder="input"
         value={item}
+        style={styles.input}
       />
       <TouchableOpacity onPress={addTodoHandler}>
         <Icon name="search1" size={15} />
@@ -37,8 +38,17 @@ export default function TodoInsert() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     flexDirection: "row",
+    width: "100%",
+    backgroundColor: "#ffffff",
+    borderBottomColor: "#000",
+    borderBottomWidth: 1,
   },
+  input: {
+    width: "80%",
+    height: 15,
+    textAlign: "center",
+  }
 });

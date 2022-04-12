@@ -10,10 +10,20 @@ const Reducer = (state, action) => {
 			const deletedTodo = state.todos.filter((todo) =>
 				(todo.id !== action.payload)
 			);
-			console.log(deletedTodo);
 			return {
 				...state,
 				todos: deletedTodo,
+			}
+		case "EDIT":
+			const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
+			const updatedTodos = [
+				...state.todos.slice(0, index),
+				action.payload,
+				...state.todos.slice(index + 1),
+			];
+			return{
+				...state,
+				todos: updatedTodos,
 			}
 		default:
 			return{
