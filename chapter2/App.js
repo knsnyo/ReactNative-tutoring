@@ -1,4 +1,5 @@
-import { StyleSheet, Text, SafeAreaView, View, ScrollView } from "react-native";
+import { Image, StyleSheet, Text, SafeAreaView, View, ScrollView } from "react-native";
+import Profile from "./Profile.jpg"
 
 export default function App() {
   const todos = [
@@ -35,7 +36,9 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.user}>
-        <View style={styles.userPicture}></View>
+        <View style={styles.userPicture}>
+          <Image style={styles.userprofile} source={Profile}/>
+        </View>
         <View style={styles.userInfo}>
           <Text style={styles.username}>{student.name}</Text>
           <Text>{student.msg}</Text>
@@ -69,6 +72,10 @@ const styles = StyleSheet.create({
   },
   userPicture: {
     flex: 1,
+  },
+  userprofile: {
+    width: 100,
+    height: 100,
   },
   userInfo: {
     flex: 2,
