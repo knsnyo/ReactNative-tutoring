@@ -25,6 +25,11 @@ const Reducer = (state, action) => {
 				...state,
 				todos: updatedTodos,
 			}
+		case "GET":
+			return {
+				...state,
+				todos: action.payload,
+			}
 		default:
 			return{
 				state,

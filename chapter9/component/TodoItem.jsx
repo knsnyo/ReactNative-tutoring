@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Context } from "../context/Context";
+import axios from "axios";
+import { endpoint } from "../context/Context";
 
 export default function TodoItem(props) {
   const { state, dispatch } = useContext(Context);
@@ -15,14 +17,21 @@ export default function TodoItem(props) {
   const [editMode, setEditMode] = useState(false);
   const [editText, setEditText] = useState(props.text);
 
-  const changeMode = () => {
+  const changeMode = async () => {
     if (editMode) {
-      dispatch({ type: "EDIT", payload: { id: props.id, text: editText } });
+      const changeTodo = {
+        id: props.id,
+        text: editText
+      }
+      console.log(endpoint + changeTodo.id);
+      await axios.put(endpoint + changeTodo.id, changeTodo);
+      dispatch({ type: "EDIT", payload: changeTodo });
     }
     setEditMode(!editMode);
   };
 
-  const deleteTodo = () => {
+  const deleteTodo = async () => {
+    await axios.delete(endpoint + props.id);
     dispatch({ type: "DELETE", payload: props.id });
   };
 

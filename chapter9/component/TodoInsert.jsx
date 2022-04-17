@@ -3,19 +3,23 @@ import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Context } from "../context/Context";
 import uuid from "uuid-random";
+import { endpoint } from "../context/Context";
+import axios from "axios";
 
 export default function TodoInsert() {
   const { state, dispatch } = useContext(Context);
 
   const [item, setItem] = useState("");
 
-  const addTodoHandler = () => {
+  const addTodoHandler = async () => {
+    const newTodo = {
+      id: uuid(),
+      text: item,
+    }
+    await axios.post(endpoint, newTodo);
     dispatch({
       type: "ADD",
-      payload: {
-        id: uuid(),
-        text: item,
-      },
+      payload: newTodo,
     });
     setItem("");
   };
