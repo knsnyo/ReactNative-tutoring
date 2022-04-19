@@ -1,22 +1,26 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import { StyleSheet, View, SafeAreaView, Platform } from "react-native";
 import TodoInsert from "./component/TodoInsert";
 import TodoList from "./component/TodoList";
 import { ContextProvider } from "./context/Context";
 import { StatusBar } from "expo-status-bar";
+import { getStatusBarHeight } from "react-native-status-bar-height";
+
+const statusBarHeight = 
+  Platform.OS === "ios" ? getStatusBarHeight(true) : StatusBar.currentHeight;
 
 export default function App() {
 
   return (
     <ContextProvider>
       <SafeAreaView style={styles.container}>
+        <View style={{height: statusBarHeight, backgroundColor: "black"}}/>
         <View style={styles.search}>
           <TodoInsert/>
         </View>
         <View style={styles.list}>
           <TodoList/>
         </View>
-        <StatusBar style="light"/>
       </SafeAreaView>
     </ContextProvider>
   );
@@ -28,6 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: statusBarHeight,
   },
   search: {
     flex: 1,

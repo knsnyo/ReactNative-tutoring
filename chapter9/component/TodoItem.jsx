@@ -23,7 +23,6 @@ export default function TodoItem(props) {
         id: props.id,
         text: editText
       }
-      console.log(endpoint + changeTodo.id);
       await axios.put(endpoint + changeTodo.id, changeTodo);
       dispatch({ type: "EDIT", payload: changeTodo });
     }

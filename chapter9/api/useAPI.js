@@ -11,7 +11,7 @@ const useAPI = (endpoint) => {
 	const getData = async () => {
 		const res = await axios.get(endpoint);
 		setData(res.data);
-	}
+	};
 
 	return data;
 }
