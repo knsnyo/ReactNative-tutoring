@@ -5,7 +5,6 @@ import { Context } from "../context/Context";
 import uuid from "uuid-random";
 //import { endpoint } from "../context/Context";
 //import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { addData } from "../api/asyncStorage";
 
 export default function TodoInsert() {
@@ -19,12 +18,12 @@ export default function TodoInsert() {
         id: uuid(),
         text: item,
       }
-      // await axios.post(endpoint, newTodo);
-      addData(newTodo);
       dispatch({
         type: "ADD",
         payload: newTodo,
       });
+      //await axios.post(endpoint, newTodo);
+      addData(newTodo);
     }
     setItem("");
   };

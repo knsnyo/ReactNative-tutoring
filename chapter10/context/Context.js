@@ -16,9 +16,10 @@ export const ContextProvider = ({children}) => {
 	const [state, dispatch] = useReducer(Reducer, INIT_STATE);
 	
 	useEffect(async() => {
-		//await AsyncStorage.clear();
+		// await AsyncStorage.clear();
 		const load = await AsyncStorage.getItem("todos");
 		const data = JSON.parse(load || "{}");
+		//console.log(data);
 		(load !== null) && dispatch({type: "GET", payload: data});
 	}, []);
 

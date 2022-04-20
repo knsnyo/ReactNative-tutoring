@@ -27,3 +27,20 @@ export const deleteData = async (id) => {
     console.log(err);
   }
 };
+
+export const updateData = async (updateTodo) => {
+	try {
+    const load = await AsyncStorage.getItem("todos");
+    const data = JSON.parse(load || "{}");
+		const index = data.findIndex((todo) => todo.id === updateTodo.id);
+		const fa = [...data];
+		const updatedTodos = [
+			...fa.slice(0, index),
+			updateTodo,
+			...fa.slice(index + 1),
+		];
+		await AsyncStorage.setItem("todos", JSON.stringify(updatedTodos));
+	} catch (err) {
+		console.log(err);
+	}
+}
