@@ -14,7 +14,7 @@ export default function App() {
   return (
     <ContextProvider>
       <SafeAreaView style={styles.container}>
-        <View style={{height: statusBarHeight, backgroundColor: "black"}}/>
+        <View style={{height: 50, backgroundColor: "black"}}/>
         <View style={styles.search}>
           <TodoInsert/>
         </View>

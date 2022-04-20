@@ -3,8 +3,10 @@ import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Context } from "../context/Context";
 import uuid from "uuid-random";
-import { endpoint } from "../context/Context";
-import axios from "axios";
+//import { endpoint } from "../context/Context";
+//import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addData } from "../api/asyncStorage";
 
 export default function TodoInsert() {
   const { state, dispatch } = useContext(Context);
@@ -12,15 +14,18 @@ export default function TodoInsert() {
   const [item, setItem] = useState("");
 
   const addTodoHandler = async () => {
-    const newTodo = {
-      id: uuid(),
-      text: item,
+    if("" !== item){
+      const newTodo = {
+        id: uuid(),
+        text: item,
+      }
+      // await axios.post(endpoint, newTodo);
+      addData(newTodo);
+      dispatch({
+        type: "ADD",
+        payload: newTodo,
+      });
     }
-    await axios.post(endpoint, newTodo);
-    dispatch({
-      type: "ADD",
-      payload: newTodo,
-    });
     setItem("");
   };
 
@@ -33,7 +38,7 @@ export default function TodoInsert() {
         style={styles.input}
       />
       <TouchableOpacity onPress={addTodoHandler}>
-        <Icon name="search1" size={15} />
+        <Icon name="plus" size={15} />
       </TouchableOpacity>
     </View>
   );
