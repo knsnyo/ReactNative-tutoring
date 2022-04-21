@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { View, StyleSheet } from "react-native";
-import { Context } from "../context/Context";
-import TodoItem from "./TodoItem";
+import { View } from "react-native";
+import { Context } from "../../context/Context";
+import TodoItem from "../todoItem/TodoItem";
+import { styles } from "./style";
 
 export default function TodoList() {
 	const { state, dispatch } = useContext(Context);
@@ -16,13 +17,3 @@ export default function TodoList() {
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-		width: "100%",
-		backgroundColor: "#fff",
-  },
-});

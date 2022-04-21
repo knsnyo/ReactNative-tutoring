@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import { Context } from "../context/Context";
+import { Context } from "../../context/Context";
 import uuid from "uuid-random";
 //import { endpoint } from "../context/Context";
 //import axios from "axios";
-import { addData } from "../api/asyncStorage";
+import { addData } from "../../api/asyncStorage";
+import { styles } from "./style"
 
 export default function TodoInsert() {
   const { state, dispatch } = useContext(Context);
@@ -42,21 +43,3 @@ export default function TodoInsert() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "row",
-    width: "100%",
-    backgroundColor: "#ffffff",
-    borderBottomColor: "#eeeeee",
-    borderBottomWidth: 1,
-  },
-  input: {
-    width: "80%",
-    height: 15,
-    textAlign: "center",
-  }
-});
