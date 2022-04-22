@@ -6,6 +6,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text>Hi</Text>
       <MyList course={"props"} done={true}/>
       <MyList course={"state"} done={false}/>
     </View>
