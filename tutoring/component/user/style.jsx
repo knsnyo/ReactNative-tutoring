@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     borderColor: "#ddd",
     borderBottomWidth: 1,
+    padding: 10,
   },
   userPicture: {
     flex: 1,
@@ -15,16 +16,21 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
     width: "100%",
     height: "100%",
+    padding: 3,
   },
   userprofile: {
-    flex: 1,
+    flex: 2,
     width: "100%",
     height: "100%",
+    borderColor: "#ddd",
+    borderWidth: 1,
+    borderRadius: "33%",
   },
   userInfo: {
-    flex: 6,
+    flex: 5,
     justifyContent: "center",
     alignItems: "flex-start",
+    padding: 10,
   },
   username: {
     fontWeight: "bold",
@@ -32,7 +38,8 @@ export const styles = StyleSheet.create({
   userMusic: {
     flex: 5,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-end",
+    padding: 10,
   },
   melon: {
     borderColor: "green",
