@@ -11,6 +11,7 @@ import { Context } from "../../context/Context";
 //import { endpoint } from "../context/Context";
 import { deleteData, updateData } from "../../api/asyncStorage";
 import { styles } from "./style";
+import ChangeModal from "../changeModal/ChangeModal";
 
 export default function TodoItem(props) {
   const { state, dispatch } = useContext(Context);
@@ -55,6 +56,7 @@ export default function TodoItem(props) {
       <TouchableOpacity onPress={deleteTodo} style={styles.touch}>
         <Icon name="delete" size={15} color={"red"} />
       </TouchableOpacity>
+      <ChangeModal true={editMode}/>
     </View>
   );
 }
