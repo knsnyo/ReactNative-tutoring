@@ -1,17 +1,11 @@
 import React, { useContext, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Context } from "../../context/Context";
 //import axios from "axios";
 //import { endpoint } from "../context/Context";
 import { deleteData, updateData } from "../../api/asyncStorage";
 import { styles } from "./style";
-import ChangeModal from "../changeModal/ChangeModal";
 
 export default function TodoItem(props) {
   const { state, dispatch } = useContext(Context);
@@ -23,8 +17,8 @@ export default function TodoItem(props) {
     if (editMode) {
       const changeTodo = {
         id: props.id,
-        text: editText
-      }
+        text: editText,
+      };
       dispatch({ type: "EDIT", payload: changeTodo });
       //await axios.put(endpoint + changeTodo.id, changeTodo);
       updateData(changeTodo);
@@ -43,21 +37,20 @@ export default function TodoItem(props) {
       <TouchableOpacity onPress={changeMode} style={styles.touch}>
         <Icon name="edit" size={15} color={"blue"} />
       </TouchableOpacity>
-      {editMode ? (
-        <TextInput
-          value={editText}
-          style={styles.input}
-          onChangeText={setEditText}
-          autoFocus
-        />
-      ) : (
-        <Text>{props.text}</Text>
-      )}
+
+        {editMode ? (
+          <TextInput
+            value={editText}
+            style={styles.input}
+            onChangeText={setEditText}
+            autoFocus
+          />
+        ) : (
+          <Text>{props.text}</Text>
+        )}
       <TouchableOpacity onPress={deleteTodo} style={styles.touch}>
         <Icon name="delete" size={15} color={"red"} />
       </TouchableOpacity>
-      <ChangeModal true={editMode}/>
     </View>
   );
 }
-

@@ -8,4 +8,7 @@ export const styles = StyleSheet.create({
 		width: "100%",
 		backgroundColor: "#fff",
   },
+  list: {
+    width: "100%"
+  }
 });
