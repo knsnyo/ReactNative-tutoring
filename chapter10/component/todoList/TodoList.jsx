@@ -4,6 +4,8 @@ import { Context } from "../../context/Context";
 import TodoItem from "../todoItem/TodoItem";
 import { styles } from "./style";
 import { SwipeListView } from "react-native-swipe-list-view";
+import DeleteButton from "../deleteButton/DeleteButton";
+import EditButton from "../editButton/EditButton";
 
 export default function TodoList() {
   const { state, dispatch } = useContext(Context);
@@ -30,8 +32,8 @@ export default function TodoList() {
 					flexDirection: "row",
 					justifyContent: "space-between",
 				}}>
-					<Text> HI </Text>
-					<Text> BYE </Text>
+					<EditButton/>
+					<DeleteButton/>
 				</View>
 			)}
 			leftOpenValue={70}

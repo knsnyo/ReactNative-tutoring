@@ -37,7 +37,6 @@ export default function TodoItem(props) {
       <TouchableOpacity onPress={changeMode} style={styles.touch}>
         <Icon name="edit" size={15} color={"blue"} />
       </TouchableOpacity>
-
         {editMode ? (
           <TextInput
             value={editText}
