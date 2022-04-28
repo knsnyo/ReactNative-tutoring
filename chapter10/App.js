@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { View, SafeAreaView, StatusBar } from "react-native";
 import TodoInsert from "./component/todoInsert/TodoInsert";
 import TodoList from "./component/todoList/TodoList";
-import { ContextProvider } from "./context/Context";
+import { Context, ContextProvider } from "./context/Context";
 import { styles } from "./style";
+import Modal from "./component/modal/modal";
+import AddButton from "./component/addButton/AddButton";
 
 export default function App() {
+
   return (
     <ContextProvider>
       <SafeAreaView style={styles.container}>
-        <StatusBar/>
+        <StatusBar />
         <View style={styles.search}>
-          <TodoInsert/>
+          <TodoInsert />
         </View>
         <View style={styles.list}>
-          <TodoList/>
+          <TodoList />
         </View>
+        <View style={styles.button}>
+          <AddButton />
+        </View>
+        <Modal />
       </SafeAreaView>
     </ContextProvider>
   );
 }
-

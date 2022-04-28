@@ -15,10 +15,16 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
   list: {
-    flex: 11,
+    flex: 10,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#fff",
   },
+  button: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "flex-end",
+  }
 });

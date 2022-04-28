@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     width: "100%",
@@ -15,5 +15,11 @@ export const styles = StyleSheet.create({
     width: "80%",
     height: 15,
     textAlign: "center",
-  }
+  },
+  text: {
+    flex: 9,
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bolder",
+  },
 });

@@ -1,3 +1,6 @@
+import EditButton from "../component/editButton/EditButton";
+import modal from "../component/modal/modal";
+
 const Reducer = (state, action) => {
 	switch (action.type){
 		case "ADD":
@@ -29,6 +32,24 @@ const Reducer = (state, action) => {
 			return {
 				...state,
 				todos: action.payload,
+			}
+		case "MODAL_ADD":
+			return{
+				...state,
+				mode: "add",
+				isVisible: true,
+			}
+		case "MODAL_EDIT":
+			return {
+				...state,
+				mode: "edit",
+				isVisible: true,
+			}
+		case "MODAL_END":
+			return {
+				...state,
+				mode: "none",
+				isVisible: false,
 			}
 		default:
 			return{

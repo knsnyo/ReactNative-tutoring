@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     borderBottomColor: "#eeeeee",
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: 40,
   },
-  input: {
+  text: {
     textAlign: "center",
   },
   touch: {
