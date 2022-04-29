@@ -26,5 +26,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "flex-end",
+    margin: 30,
   }
 });

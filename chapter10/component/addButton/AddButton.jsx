@@ -12,7 +12,7 @@ export default () => {
 
 	return (
 		<Pressable onPress={press} style={styles.button}>
-			<Icon name="plus" size={30} color={"green"} />
+			<Icon name="plus" size={40} color={"green"} />
 		</Pressable>
 	)
 }

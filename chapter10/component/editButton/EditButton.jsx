@@ -8,7 +8,7 @@ export default (props) => {
   const { state, dispatch } = useContext(Context);
 
 	const press = () => {
-		dispatch({type: "MODAL_EDIT"});
+		dispatch({type: "MODAL_EDIT", payload: props.id});
 	}
 
 	return (

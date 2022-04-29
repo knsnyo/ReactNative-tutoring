@@ -6,8 +6,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const INIT_STATE = {
 	todos: [],
-	mode: "none",
-	isVisible: false,
+	modal: {
+		mode: "none",
+		isVisible: false,
+	}
 };
 //export const endpoint = "http://localhost:3000/todos/";
 //export const endpoint = "http://192.168.0.18/todos/";

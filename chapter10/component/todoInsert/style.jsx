@@ -20,6 +20,5 @@ export const styles = StyleSheet.create({
     flex: 9,
     textAlign: "center",
     fontSize: 30,
-    fontWeight: "bolder",
   },
 });

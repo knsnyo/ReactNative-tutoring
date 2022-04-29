@@ -1,8 +1,6 @@
-import EditButton from "../component/editButton/EditButton";
-import modal from "../component/modal/modal";
-
 const Reducer = (state, action) => {
 	switch (action.type){
+		// todo
 		case "ADD":
 			const addedTodo = [...state.todos, action.payload];
 			return {
@@ -17,7 +15,7 @@ const Reducer = (state, action) => {
 				...state,
 				todos: deletedTodo,
 			}
-		case "EDIT":
+		case "UPDATE":
 			const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
 			const updatedTodos = [
 				...state.todos.slice(0, index),
@@ -33,23 +31,32 @@ const Reducer = (state, action) => {
 				...state,
 				todos: action.payload,
 			}
+
+		// modal
 		case "MODAL_ADD":
 			return{
 				...state,
-				mode: "add",
-				isVisible: true,
+				modal: {
+					mode: "add",
+					isVisible: true,
+				}
 			}
 		case "MODAL_EDIT":
 			return {
 				...state,
-				mode: "edit",
-				isVisible: true,
+				modal: {
+					mode: "edit",
+					isVisible: true,
+					id: action.payload,
+				}
 			}
 		case "MODAL_END":
 			return {
 				...state,
-				mode: "none",
-				isVisible: false,
+				modal: {
+					mode: "none",
+					isVisible: false,
+				}
 			}
 		default:
 			return{
