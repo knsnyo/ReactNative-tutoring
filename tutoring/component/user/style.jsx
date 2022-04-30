@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   melon: {
-    borderColor: "green",
+    borderColor: "#0f0",
     borderWidth: 2,
     padding: 10,
     borderRadius: 30,
