@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     height: "100%",
     borderColor: "#ddd",
     borderWidth: 1,
-    borderRadius: "33%",
+    borderRadius: 40,
   },
   userInfo: {
     flex: 5,
