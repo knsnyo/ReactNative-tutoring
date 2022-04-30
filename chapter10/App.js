@@ -4,7 +4,7 @@ import TodoInsert from "./component/todoInsert/TodoInsert";
 import TodoList from "./component/todoList/TodoList";
 import { Context, ContextProvider } from "./context/Context";
 import { styles } from "./style";
-import Modal from "./component/modal/modal";
+import Modal from "./component/modal/Modal";
 import AddButton from "./component/addButton/AddButton";
 
 export default function App() {

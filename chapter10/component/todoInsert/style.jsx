@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     width: "100%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#000",
     borderBottomColor: "#eeeeee",
     borderBottomWidth: 1,
   },
@@ -20,5 +20,6 @@ export const styles = StyleSheet.create({
     flex: 9,
     textAlign: "center",
     fontSize: 30,
+    color: "#fff",
   },
 });

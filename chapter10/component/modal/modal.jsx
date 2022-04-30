@@ -21,12 +21,14 @@ export default () => {
         addData(newTodo);
       }
     } else if ("edit" === state.modal.mode) {
-      const editTodo = {
-        id: state.modal.id,
-        text: text,
-      };
-      dispatch({ type: "UPDATE", payload: editTodo });
-      updateData(editTodo);
+      if("" !== text){
+        const editTodo = {
+          id: state.modal.id,
+          text: text,
+        };
+        dispatch({ type: "UPDATE", payload: editTodo });
+        updateData(editTodo);
+      }
     }
     dispatch({ type: "MODAL_END" });
     setText("");
