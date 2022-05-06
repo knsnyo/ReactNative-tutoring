@@ -5,7 +5,7 @@ export default ({todos}) => {
 
   const todoList = todos.map((todo) => {
     return (
-      <View style={styles.todoItem}>
+      <View key={todo} style={styles.todoItem}>
         <Text>{todo}</Text>
       </View>
     );

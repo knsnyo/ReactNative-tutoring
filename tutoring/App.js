@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, View, Text } from "react-native";
 import TodoList from "./component/todoList/todoList";
 import User from "./component/user/User";
@@ -19,6 +19,10 @@ export default function App() {
     setTodos(updateTodos);
     setNum(num+1);
   }
+
+  useEffect(() => {
+    console.log(`num: ${num}`);
+  }, [num]);
 
   return (
     <View style={styles.container}>
