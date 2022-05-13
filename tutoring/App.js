@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button, View, Text } from "react-native";
+import TodoInsert from "./component/todoInsert/TodoInsert";
 import TodoList from "./component/todoList/todoList";
 import User from "./component/user/User";
 import { styles } from "./style";
+import uuid from "uuid-random";
 
 export default function App() {
   const student = {
@@ -11,27 +13,33 @@ export default function App() {
     music: "웬디 - Goodbye",
   };
 
-  const [num, setNum] = useState(1);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([{
+    id: 1,
+    text: "sex"
+  },{
+    id: 2,
+    text: "sex"
+  }]);
 
-  const onPress = () => {
-    let updateTodos = [...todos, num];
-    setTodos(updateTodos);
-    setNum(num+1);
+  const addTodos = (text) => {
+    const newTodo = {
+      id: uuid(),
+      text: text,
+    };
+    const newTodos = [...todos, newTodo];
+    setTodos(newTodos);
   }
 
-  useEffect(() => {
-    console.log(`num: ${num}`);
-  }, [num]);
+  const deleteTodos = (id) => (e) => {
+    const deletedTodos = todos.filter(todo => todo.id !== id);
+    setTodos(deletedTodos);
+  }
 
   return (
     <View style={styles.container}>
       <User student={student}/>
-      <TodoList todos={todos}/>
-      <Button
-      title="추가"
-      onPress={onPress}
-      />
+      <TodoInsert addTodos={addTodos}/>
+      <TodoList todos={todos} deleteTodos={deleteTodos}/>
     </View>
   );
 }
