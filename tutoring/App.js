@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import { Button, View, Text } from "react-native";
+import { View } from "react-native";
 import TodoInsert from "./component/todoInsert/TodoInsert";
-import TodoList from "./component/todoList/todoList";
+import TodoList from "./component/todoList/TodoList";
 import User from "./component/user/User";
 import { styles } from "./style";
-import uuid from "uuid-random";
+import { ContextProvider } from "./context/Context";
 
 export default function App() {
   const student = {
@@ -13,33 +12,13 @@ export default function App() {
     music: "웬디 - Goodbye",
   };
 
-  const [todos, setTodos] = useState([{
-    id: 1,
-    text: "sex"
-  },{
-    id: 2,
-    text: "sex"
-  }]);
-
-  const addTodos = (text) => {
-    const newTodo = {
-      id: uuid(),
-      text: text,
-    };
-    const newTodos = [...todos, newTodo];
-    setTodos(newTodos);
-  }
-
-  const deleteTodos = (id) => (e) => {
-    const deletedTodos = todos.filter(todo => todo.id !== id);
-    setTodos(deletedTodos);
-  }
-
   return (
-    <View style={styles.container}>
-      <User student={student}/>
-      <TodoInsert addTodos={addTodos}/>
-      <TodoList todos={todos} deleteTodos={deleteTodos}/>
-    </View>
+    <ContextProvider>
+      <View style={styles.container}>
+        <User student={student} />
+        <TodoInsert/>
+        <TodoList/>
+      </View>
+    </ContextProvider>
   );
 }

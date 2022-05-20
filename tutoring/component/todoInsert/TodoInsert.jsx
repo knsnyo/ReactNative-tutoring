@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { View, TextInput, Pressable } from "react-native";
 import { styles } from "./style";
 import Icon from "react-native-vector-icons/AntDesign";
+import { Context } from "../../context/Context";
+import uuid from "uuid-random";
 
-export default ({addTodos}) => {
+export default () => {
+  const { state, dispatch } = useContext(Context);
 	const [text, setText] = useState("");
 
 	const onPress = () => {
 		if("" !== text){
-			addTodos(text);
+      const newTodo = {
+        id: uuid(),
+        text: text,
+      }
+      dispatch({type: "ADD", payload: newTodo});
 			setText("");
 		}
 	}
