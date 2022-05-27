@@ -1,22 +1,67 @@
 const Reducer = (state, action) => {
-	switch (action.type) {
+	switch (action.type){
+		// todo
 		case "ADD":
-			const addedTodos = [...state.todos, action.payload];
+			const addedTodo = [...state.todos, action.payload];
 			return {
 				...state,
-				todos: addedTodos,
+				todos: addedTodo,
 			};
 		case "DELETE":
-			const deletedTodos = state.todos.filter(todo => todo.id !== action.payload);
+			const deletedTodo = state.todos.filter((todo) =>
+				(todo.id !== action.payload)
+			);
 			return {
 				...state,
-				todos: deletedTodos,
+				todos: deletedTodo,
+			}
+		case "UPDATE":
+			const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
+			const updatedTodos = [
+				...state.todos.slice(0, index),
+				action.payload,
+				...state.todos.slice(index + 1),
+			];
+			return{
+				...state,
+				todos: updatedTodos,
+			}
+		case "GET":
+			return {
+				...state,
+				todos: action.payload,
 			}
 
-		default:
-			return {
-				state,
+		// modal
+		case "MODAL_ADD":
+			return{
+				...state,
+				modal: {
+					mode: "add",
+					isVisible: true,
+				}
 			}
+		case "MODAL_EDIT":
+			return {
+				...state,
+				modal: {
+					mode: "edit",
+					isVisible: true,
+					id: action.payload,
+				}
+			}
+		case "MODAL_END":
+			return {
+				...state,
+				modal: {
+					mode: "none",
+					isVisible: false,
+				}
+			}
+		default:
+			return{
+				state,
+			};
 	}
 }
 

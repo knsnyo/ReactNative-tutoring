@@ -1,39 +1,37 @@
-import { useContext } from "react";
-import { View, Text, Pressable } from "react-native";
+import React, { useContext } from "react";
+import { View } from "react-native";
+import { Context } from "../../context/Context";
+import TodoItem from "../todoItem/TodoItem";
 import { styles } from "./style";
 import { SwipeListView } from "react-native-swipe-list-view";
-import Icon from "react-native-vector-icons/AntDesign";
-import { Context } from "../../context/Context";
+import DeleteButton from "../deleteButton/DeleteButton";
+import EditButton from "../editButton/EditButton";
 
-export default () => { 
+export default function TodoList() {
   const { state, dispatch } = useContext(Context);
 
-  const onPress = (todo) => {
-    dispatch({type: "DELETE", payload: todo.id});
-  }
   return (
-    <View style={styles.todoList}>
-      <SwipeListView
-        style={styles.list}
-        data={state.todos}
-        renderItem={(data) => (
-          <View style={styles.item}>
-            <Text style={styles.text}>{data.item.text}</Text>
-          </View>
-        )}
-        renderHiddenItem={(data) => (
-          <View style={styles.hidden}>
-            <Pressable style={styles.button}>
-              <Icon name="edit" size={40} color="blue"/>
-            </Pressable>
-            <Pressable style={styles.button} onPress={() => onPress(data.item)}>
-              <Icon name="delete" size={40} color="red"/>
-            </Pressable>
-          </View>
-        )}
-        leftOpenValue={70}
-        rightOpenValue={-70}
-      />
+    <View style={styles.container}>
+      <SwipeListView 
+			style={styles.list}
+			data={state.todos}
+			renderItem={(data) => (
+				<TodoItem key={data.item.id} id={data.item.id} text={data.item.text}/>
+			)}
+			renderHiddenItem={(data) => (
+				<View style={{
+					alignItems: "center",
+					flex: 1,
+					flexDirection: "row",
+					justifyContent: "space-between",
+				}}>
+					<EditButton id={data.item.id} text={data.item.text}/>
+					<DeleteButton id={data.item.id}/>
+				</View>
+			)}
+			leftOpenValue={70}
+			rightOpenValue={-70}
+			/>
     </View>
   );
-};
+}
