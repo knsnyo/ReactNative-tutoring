@@ -48,7 +48,9 @@ export default () => {
           placeholder={placeholder}
           onChangeText={(text) => setText(text)}
           onEndEditing={(text) => setText(text)}
+          onSubmitEditing={hide}
           value={text}
+          blurOnSubmit={true}
         />
       </View>
     </Modal>
