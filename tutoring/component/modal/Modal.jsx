@@ -4,6 +4,7 @@ import Modal from "react-native-modal";
 import { styles } from "./style";
 import { Context } from "../../context/Context";
 import uuid from "uuid-random";
+import { addData, updateData } from "../../api/asyncStorage";
 
 export default () => {
   const { state, dispatch } = useContext(Context);
@@ -17,6 +18,7 @@ export default () => {
           text: text,
         };
         dispatch({ type: "ADD", payload: newTodo });
+        addData(newTodo);
       }
     } else if ("edit" === state.modal.mode) {
       if("" !== text){
@@ -25,6 +27,7 @@ export default () => {
           text: text,
         };
         dispatch({ type: "UPDATE", payload: editTodo });
+        updateData(editTodo);
       }
     }
     dispatch({ type: "MODAL_END" });
@@ -45,6 +48,7 @@ export default () => {
           placeholder={placeholder}
           onChangeText={(text) => setText(text)}
           onEndEditing={(text) => setText(text)}
+          onSubmitEditing={hide}
           value={text}
         />
       </View>
